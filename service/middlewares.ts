@@ -1,6 +1,5 @@
 import { Request, Response, NextFunction } from 'express';
 import { constants } from './constants/constants';
-import { AES, enc } from 'crypto-js';
 
 const buildErrorResponse = (res: Response, code: number, errorCode: string, errorMessage?: string) => {
     res.status(code).send({
