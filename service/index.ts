@@ -1,6 +1,4 @@
 // tslint:disable: no-console
-// For SSL certificate chain
-process.env['NODE_TLS_REJECT_UNAUTHORIZED'] = '0';
 
 // TODO: server certificate for https
 import { createServer } from 'http';
@@ -8,6 +6,7 @@ import { load } from './env';
 import { app } from './app';
 import { constants } from './constants/constants';
 import { mySqlService } from './services/mySql/mySqlService';
+import { twilioClient } from './services/twilioClient/twilioClient';
 
 process.on('unhandledRejection', (reason, p) => {
     console.error('Unhandled rejection ', { reason, p });
@@ -45,4 +44,5 @@ server.on('error', errorHandler);
 server.on('listening', () => {
     console.log(`App listening on port ${constants.PORT}`);
     mySqlService.activate();
+    twilioClient.activate();
 });
