@@ -6,9 +6,8 @@ export const load = () => {
     const env = nconf.get('NODE_ENV');
 
     if (env === undefined || env === ('NODE_ENV')) {
-        // tslint:disable-next-line: no-console
-        console.error('FATAL: No environment variable set');
-        process.exit(0);
+        nconf.set('NODE_ENV', 'DEV');
+        return this; 
     } else {
         return this;
     }
