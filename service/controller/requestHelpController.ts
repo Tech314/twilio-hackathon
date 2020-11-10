@@ -17,7 +17,7 @@ export const requestHelpController = async (req: Request, res: Response) => {
             }).then(message => {
                 res.status(200).send(message);
             }).catch(message => {
-                res.status(message.status).send(message);
+                res.status(400).send(message);
             });
         } else {
             throw ({
