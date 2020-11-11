@@ -20,10 +20,10 @@ export const requestHelpController = async (req: Request, res: Response) => {
 
             }).then(() => {
                 console.log('success');
-                res.status(200).redirect('https://creditoneinteractive.com/development/1-3-1/corporate/high-yield/cd?helpStatus=success');
+                res.status(200).redirect('https://creditoneinteractive.com/development/1-3-1/corporate/high-yield/cd?announce=twilio');
             }).catch((err) => {
                 console.log('not success', err);
-                res.status(400).redirect('https://creditoneinteractive.com/development/1-3-1/corporate/high-yield/cd?helpStatus=messageFailed');
+                res.status(400).redirect('https://creditoneinteractive.com/development/1-3-1/corporate/high-yield/cd?danger=messageFailed');
             });
         } else {
             throw ({
@@ -35,9 +35,9 @@ export const requestHelpController = async (req: Request, res: Response) => {
     } catch (error) {
         console.log('error', error);
         if (error.message === 'The number provided is not from a mobile phone') {
-            res.status(error.status).redirect('https://creditoneinteractive.com/development/1-3-1/corporate/high-yield/cd?helpStatus=notMobile');
+            res.status(error.status).redirect('https://creditoneinteractive.com/development/1-3-1/corporate/high-yield/cd?danger=notMobile');
         } else {
-            res.status(error.status).redirect('https://creditoneinteractive.com/development/1-3-1/corporate/high-yield/cd?helpStatus=apiFailed');
+            res.status(error.status).redirect('https://creditoneinteractive.com/development/1-3-1/corporate/high-yield/cd?danger=apiFailed');
         }
     }
 };
