@@ -65,7 +65,7 @@ class MySqlService {
 
     public selectAllRooms = () => {
         return new Promise<any>((resolve, reject) => {
-            const query = 'SELECT * FROM CHAT_ROOMS ORDER BY date_created DESC';
+            const query = 'SELECT * FROM CHAT_ROOMS ORDER BY date_created ASC';
 
             this.pool.query(query, (err, res) => {
                 if (err) {
@@ -78,7 +78,7 @@ class MySqlService {
 
     public selectAllUnjoinedRooms = () => {
         return new Promise<any>((resolve, reject) => {
-            const queryString = 'SELECT * FROM CHAT_ROOMS WHERE rep_joined = ? ORDER BY date_created DESC';
+            const queryString = 'SELECT * FROM CHAT_ROOMS WHERE rep_joined = ? ORDER BY date_created ASC';
             
             const query = format(queryString, ['false']);
 
