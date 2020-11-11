@@ -38,7 +38,7 @@ class MySqlService {
             const queryString = 'UPDATE CHAT_ROOMS SET rep_joined = ? WHERE room_id = ?';
 
             const query = format(queryString, [roomId, 'true']);
-
+            console.log(query);
             this.pool.query(query, (err, res) => {
                 if (err) {
                     reject(err);
