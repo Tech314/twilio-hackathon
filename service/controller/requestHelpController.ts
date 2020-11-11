@@ -19,10 +19,8 @@ export const requestHelpController = async (req: Request, res: Response) => {
                 from: constants.TWILIO_NUMBER,
 
             }).then(() => {
-                console.log('success');
                 res.status(200).redirect('https://creditoneinteractive.com/development/1-3-1/corporate/high-yield/cd?announce=twilio');
-            }).catch((err) => {
-                console.log('not success', err);
+            }).catch(() => {
                 res.status(400).redirect('https://creditoneinteractive.com/development/1-3-1/corporate/high-yield/cd?danger=messageFailed');
             });
         } else {
@@ -33,7 +31,6 @@ export const requestHelpController = async (req: Request, res: Response) => {
         }
 
     } catch (error) {
-        console.log('error', error);
         if (error.message === 'The number provided is not from a mobile phone') {
             res.status(error.status).redirect('https://creditoneinteractive.com/development/1-3-1/corporate/high-yield/cd?danger=notMobile');
         } else {
