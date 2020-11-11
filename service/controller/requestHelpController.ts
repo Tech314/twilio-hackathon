@@ -14,7 +14,7 @@ export const requestHelpController = async (req: Request, res: Response) => {
         if (isMobile(twilioRes)) {
             const roomId = await generateRoomId();
             twilioClient.client.messages.create({
-                body: `Thank you for being a loyal customer. For help please use the following link to join a video chat with one of our reps. https://www.creditonebank.com?name=${roomId}`,
+                body: `Thank you for your interest in Credit One Bank’s real-time video support. Click the link below to connect with your personal Account Manager, standing by to answer all your questions. https://www.creditonebank.com?name=${roomId}`,
                 to: twilioRes.phoneNumber,
                 from: constants.TWILIO_NUMBER,
 

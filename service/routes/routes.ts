@@ -16,6 +16,6 @@ export const apiRoutes = (router: Router) => {
     router.get('/dashboard/getAll', dashboardController.getAllRooms);
     router.get('/dashboard/getUnjoined', dashboardController.getUnjoinedRooms);
     router.post('/dashboard/join', dashboardController.joinRoom);
-    router.delete('/dashboard/delete', dashboardController.deleteRoom);
+    router.post('/dashboard/delete', dashboardController.deleteRoom);
     return router;
 };
