@@ -22,7 +22,23 @@ class DashboardController {
         }
     }
 
-    public joinRoom = async (_req: Request, _res: Response) => {}
+    public joinRoom = async (req: Request, res: Response) => {
+        try {
+            const dbRes = await mySqlService.joinRoom(req.body['roomId']);
+            res.status(200).send(dbRes);
+        } catch (err) {
+            res.status(400).send(err);
+        }
+    }
+
+    public deleteRoom = async (req: Request, res: Response) => {
+        try {
+            const dbRes = await mySqlService.removeRoom(req.body['roomId']);
+            res.status(200).send(dbRes);
+        } catch (err) {
+            res.status(400).send(err);
+        }
+    }
 
 }
 

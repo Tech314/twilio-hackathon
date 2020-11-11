@@ -1,6 +1,7 @@
 
 import { Request, Response, Router } from 'express';
 import { requestHelpController } from '../controller/requestHelpController';
+import { dashboardController } from '../controller/dashboardController';
 
 export const apiRoutes = (router: Router) => {
 
@@ -11,5 +12,10 @@ export const apiRoutes = (router: Router) => {
     } );
 
     router.post('/request/help', requestHelpController);
+
+    router.get('/dashboard/getAll', dashboardController.getAllRooms);
+    router.get('/dashboard/getUnjoined', dashboardController.getUnjoinedRooms);
+    router.post('/dashboard/join', dashboardController.joinRoom);
+    router.delete('/dashboard/delete', dashboardController.deleteRoom);
     return router;
 };
