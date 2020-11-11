@@ -18,12 +18,10 @@ export const requestHelpController = async (req: Request, res: Response) => {
                 to: twilioRes.phoneNumber,
                 from: constants.TWILIO_NUMBER,
 
-            }).then(message => {
-                res.status(200).send({
-                    result: `Message successfully sent to ${message.to}`
-                }).redirect(req.headers['referer']);
-            }).catch(message => {
-                res.status(400).send(message).redirect(req.headers['referer']);
+            }).then(() => {
+                res.status(200).redirect(req.headers['referer']);
+            }).catch(() => {
+                res.status(400).redirect(req.headers['referer']);
             });
         } else {
             throw ({
@@ -33,7 +31,7 @@ export const requestHelpController = async (req: Request, res: Response) => {
         }
 
     } catch (error) {
-        res.status(error.status).send({message: error.message, code: error.code}).redirect(req.headers['referer']);
+        res.status(error.status).redirect(req.headers['referer']);
     }
 };
 
