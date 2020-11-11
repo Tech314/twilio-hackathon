@@ -24,7 +24,6 @@ class DashboardController {
 
     public joinRoom = async (req: Request, res: Response) => {
         try {
-            console.log(req.body);
             const dbRes = await mySqlService.joinRoom(req.body['roomId']);
             res.status(200).send(dbRes);
         } catch (err) {
@@ -34,7 +33,6 @@ class DashboardController {
 
     public deleteRoom = async (req: Request, res: Response) => {
         try {
-            console.log(req.body);
             const dbRes = await mySqlService.removeRoom(req.body['roomId']);
             res.status(200).send(dbRes);
         } catch (err) {

@@ -38,7 +38,7 @@ class MySqlService {
             const queryString = 'UPDATE CHAT_ROOMS SET rep_joined = ? WHERE room_id = ?';
 
             const query = format(queryString, ['true', roomId]);
-            console.log(query);
+            
             this.pool.query(query, (err, res) => {
                 if (err) {
                     reject(err);
@@ -53,7 +53,6 @@ class MySqlService {
             const queryString = 'DELETE FROM CHAT_ROOMS WHERE room_id = ?';
 
             const query = format(queryString, [roomId]);
-            console.log(query);
 
             this.pool.query(query, (err, res) => {
                 if (err) {
