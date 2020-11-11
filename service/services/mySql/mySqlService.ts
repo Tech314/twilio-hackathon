@@ -53,6 +53,7 @@ class MySqlService {
             const queryString = 'DELETE FROM CHAT_ROOMS WHERE room_id = ?';
 
             const query = format(queryString, [roomId]);
+            console.log(query);
 
             this.pool.query(query, (err, res) => {
                 if (err) {
