@@ -1,6 +1,6 @@
 
 import { Request, Response } from 'express';
-import { mySqlService } from 'services/mySql/mySqlService';
+import { mySqlService } from '../services/mySql/mySqlService';
 
 class DashboardController {
 
