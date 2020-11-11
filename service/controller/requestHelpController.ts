@@ -19,9 +19,9 @@ export const requestHelpController = async (req: Request, res: Response) => {
                 from: constants.TWILIO_NUMBER,
 
             }).then(() => {
-                res.status(200).redirect(req.headers['referer']);
+                res.status(200).redirect('https://creditoneinteractive.com/development/1-3-1/corporate/high-yield/cd/');
             }).catch(() => {
-                res.status(400).redirect(req.headers['referer']);
+                res.status(400).redirect('https://creditoneinteractive.com/development/1-3-1/corporate/high-yield/cd/');
             });
         } else {
             throw ({
@@ -31,7 +31,7 @@ export const requestHelpController = async (req: Request, res: Response) => {
         }
 
     } catch (error) {
-        res.status(error.status).redirect(req.headers['referer']);
+        res.status(error.status).redirect('https://creditoneinteractive.com/development/1-3-1/corporate/high-yield/cd/');
     }
 };
 
