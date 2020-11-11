@@ -72,7 +72,7 @@ class UnjoinedComponent {
             this.joinSubscription$ = this.dashboardService.joinRoom(roomId).subscribe(() => {
                 this.callApi();
             });
-            document.getElementById('video').setAttribute('src', `https://creditoneinteractive.com/development/1-3-1/corporate/high-yield/cd/?roomName=${roomId}`);
+            document.getElementById('video').setAttribute('src', `https://creditoneblack.com/hackathon/?roomName=${roomId}`);
         };
         this.exitRoom = () => {
             document.getElementById('current-room').innerHTML = `Current Room: none`;
@@ -512,7 +512,7 @@ class AllComponent {
             this.joinSubscription$ = this.dashboardService.joinRoom(roomId).subscribe(() => {
                 this.callApi();
             });
-            document.getElementById('video').setAttribute('src', `https://creditoneinteractive.com/development/1-3-1/corporate/high-yield/cd/?roomName=${roomId}`);
+            document.getElementById('video').setAttribute('src', `https://creditoneblack.com/hackathon/?roomName=${roomId}`);
         };
         this.exitRoom = () => {
             document.getElementById('current-room').innerHTML = `Current Room: none`;
