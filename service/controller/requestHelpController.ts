@@ -20,21 +20,25 @@ export const requestHelpController = async (req: Request, res: Response) => {
 
             }).then(() => {
                 console.log('success');
-                res.status(200).redirect('https://creditoneinteractive.com/development/1-3-1/corporate/high-yield/cd/');
+                res.status(200).redirect('https://creditoneinteractive.com/development/1-3-1/corporate/high-yield/cd?helpStatus=success');
             }).catch((err) => {
                 console.log('not success', err);
-                res.status(400).redirect('https://creditoneinteractive.com/development/1-3-1/corporate/high-yield/cd/');
+                res.status(400).redirect('https://creditoneinteractive.com/development/1-3-1/corporate/high-yield/cd?helpStatus=messageFailed');
             });
         } else {
             throw ({
                 status: 400,
                 message: 'The number provided is not from a mobile phone'
-            })
+            });
         }
 
     } catch (error) {
         console.log('error', error);
-        res.status(error.status).redirect('https://creditoneinteractive.com/development/1-3-1/corporate/high-yield/cd/');
+        if (error.message === 'The number provided is not from a mobile phone') {
+            res.status(error.status).redirect('https://creditoneinteractive.com/development/1-3-1/corporate/high-yield/cd?helpStatus=notMobile');
+        } else {
+            res.status(error.status).redirect('https://creditoneinteractive.com/development/1-3-1/corporate/high-yield/cd?helpStatus=apiFailed');
+        }
     }
 };
 
@@ -56,7 +60,7 @@ const generateRoomId = async (failureCount?: number) => {
             throw {
                 status: 400,
                 message: 'Unable to create video chat room'
-            }
+            };
         } else {
             await generateRoomId(failureCount + 1);
         }
