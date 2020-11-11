@@ -37,7 +37,7 @@ class MySqlService {
         return new Promise<any>((resolve, reject) => {
             const queryString = 'UPDATE CHAT_ROOMS SET rep_joined = ? WHERE room_id = ?';
 
-            const query = format(queryString, [roomId, 'true']);
+            const query = format(queryString, ['true', roomId]);
             console.log(query);
             this.pool.query(query, (err, res) => {
                 if (err) {
